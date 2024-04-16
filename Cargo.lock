@@ -1376,40 +1376,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "my-auth"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "askama",
- "askama_axum",
- "async-trait",
- "axum",
- "axum-messages",
- "base64 0.22.0",
- "chrono",
- "dotenvy",
- "lazy_static",
- "oauth2",
- "password-auth",
- "rand",
- "rand_core",
- "regex",
- "reqwest",
- "rust-i18n",
- "serde",
- "serde_json",
- "serde_trim",
- "sqlx",
- "tokio",
- "tower",
- "tower-http",
- "tower-sessions",
- "tower-sessions-redis-store",
- "tracing-subscriber",
- "validator",
-]
-
-[[package]]
 name = "native-tls"
 version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3280,6 +3246,40 @@ checksum = "77afa9a11836342370f4817622a2f0f418b134426d91a82dfb48f532d2ec13ef"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "webpack-config"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "askama",
+ "askama_axum",
+ "async-trait",
+ "axum",
+ "axum-messages",
+ "base64 0.22.0",
+ "chrono",
+ "dotenvy",
+ "lazy_static",
+ "oauth2",
+ "password-auth",
+ "rand",
+ "rand_core",
+ "regex",
+ "reqwest",
+ "rust-i18n",
+ "serde",
+ "serde_json",
+ "serde_trim",
+ "sqlx",
+ "tokio",
+ "tower",
+ "tower-http",
+ "tower-sessions",
+ "tower-sessions-redis-store",
+ "tracing-subscriber",
+ "validator",
 ]
 
 [[package]]

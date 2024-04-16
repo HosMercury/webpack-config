@@ -6,7 +6,7 @@ const autoprefixer = require("autoprefixer");
 const webpack = require("webpack");
 const fs = require("fs");
 
-// inject the generated css / js files into the layouts
+// inject the generated css/js files into the layouts
 fs.readdirSync("./static/").forEach((file) => {
   ["base", "guest"].forEach((f) => {
     if (file.startsWith("style")) {
