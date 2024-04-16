@@ -1,0 +1,112 @@
+{% extends "layouts/base.html.j2" %}
+
+{% block content %}
+<div>
+  <div>
+    <h2>User Info</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>{{ t!("id")|uppercase }}</td>
+          <td>{{user_roles.user.id }}</td>
+        </tr>
+        <tr>
+          <td>{{ t!("name")|capitalize }}</td>
+          <td>{{user_roles.user.name }}</td>
+        </tr>
+        <tr>
+          <td>{{ t!("username")|capitalize }}</td>
+          <td>
+            {% match user_roles.user.username %}
+            {% when Some with (username) %}
+            {{ username }}
+            {% when None %}
+            -
+            {% endmatch %}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ t!("email")|capitalize }}</td>
+          <td>
+            {% match user_roles.user.email %}
+            {% when Some with (email) %}
+            {{ email }}
+            {% when None %}
+            -
+            {% endmatch %}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ t!("provider")|capitalize }}</td>
+          <td>{{user_roles.user.provider }}</td>
+        </tr>
+        <tr>
+          <td>{{ t!("last_sign")|capitalize }}</td>
+          <td>
+            {% match user_roles.user.last_sign %}
+            {% when Some with (last_sign)
+            %} {{ last_sign|time }}
+            {% when None %}
+            -
+            {% endmatch %}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ t!("created_at")|capitalize }}</td>
+          <td>{{user_roles.user.created_at|time }}</td>
+        </tr>
+        <tr>
+          <td>{{ t!("updated_at") }}</td>
+          <td>
+            {% match user_roles.user.updated_at %}
+            {% when Some with (updated_at) %}
+            {{ updated_at|time }}
+            {% when None %}
+            -
+            {% endmatch %}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ t!("deleted_at")|capitalize }}</td>
+          <td>
+            {% match user_roles.user.deleted_at %}
+            {% when Some with (deleted_at) %}
+            {{ deleted_at|time }}
+            {% when None %}
+            -
+            {% endmatch%}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h2>Roles</h2>
+    {% if user_roles.roles.is_empty() %}
+    <p>{{t!("no_roles")}}</p>
+    {% else %}
+    {% for role_perms in user_roles.roles %}
+    <div>
+      <div>
+        <p>{{role_perms.role.name}}</p>
+        <a href="/roles/{{ role_perms.role.id }}"> &#10142; </a>
+      </div>
+      {% if role_perms.permissions.is_empty() %}
+      <p>{{t!("no_permissions")}}</p>
+      {% else %}
+      <div>
+        {% for permission in role_perms.permissions %}
+        <div>
+          <span>{{permission.name}}</span>
+          <a href="/permissions/{{ permission.id }}"> &#10142; </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif%}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

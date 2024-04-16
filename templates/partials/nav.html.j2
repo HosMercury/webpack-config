@@ -1,0 +1,18 @@
+<nav>
+  <div>
+    <a href="/">Multi Auth</a>
+    <ul>
+      <li>
+        <a href="/users">{{ t!("users")|capitalize }}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    {% include "partials/locale.html.j2" %}
+
+    <p>{{ username }}</p>
+    <form action="/signout" method="post">
+      <button type="submit">{{ t!("sign_out")|capitalize }}</button>
+    </form>
+  </div>
+</nav>

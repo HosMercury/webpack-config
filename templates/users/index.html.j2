@@ -1,0 +1,71 @@
+{% extends "layouts/base.html.j2" %}
+
+{% block content %}
+<div>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Usename</th>
+      <th>Email</th>
+      <th>Provider</th>
+      <th>Created at</th>
+      <th>Last login</th>
+      <th>Updated at</th>
+      <th>Deleted at</th>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>
+          <a href="/users/{{ user.id }}">{{ user.id }}</a>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>
+          {% match user.username %}
+          {% when Some with (username) %}
+          {{ username }}
+          {% when None %}
+          -
+          {% endmatch %}
+        </td>
+        <td>
+          {% match user.email %}
+          {% when Some with (email) %}
+          {{ email }}
+          {% when None %}
+          -
+          {% endmatch %}
+        </td>
+        <td>{{ user.provider }}</td>
+        <td>{{ user.created_at }}</td>
+        <td>
+          {% match user.last_sign %}
+          {% when Some with (last_sign) %}
+          {{ last_sign|time }}
+          {% when None %}
+          -
+          {% endmatch %}
+        </td>
+        <td>
+          {% match user.updated_at %}
+          {% when Some with (updated_at) %}
+          {{ updated_at|time }}
+          {% when None %}
+          -
+          {% endmatch %}
+        </td>
+        <td>
+          {% match user.deleted_at %}
+          {% when Some with (deleted_at) %}
+          {{ deleted_at|time }}
+          {% when None %}
+          -
+          {% endmatch %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

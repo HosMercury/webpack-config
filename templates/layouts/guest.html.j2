@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='{% if locale == "ar" %}ar{% else %}en{% endif %}' dir='{% if locale == "ar" %}rtl{% else %}ltr{% endif %}'>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% include "partials/favicon.html.j2" %}
+  <link rel="stylesheet" href="/static/style-a34561fa52.css" type="text/css" />
+  <script defer src="/static/script-637528899b.js"></script>
+  <title>
+    {% block title %}
+    {{ title|capitalize }} | Mono
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+  <div>
+    <h1>{{ title|capitalize }}</h1>
+    {% block content %}
+    {% endblock %}
+  </div>
+  <footer>
+    <p>{{ t!("rights_reserved")|capitalize }}</p>
+  </footer>
+</body>
+
+</html>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<div>
+  <a
+    id="locale"
+    href='?locale={% if locale == "en" %}{{ "ar" }}{% else %}{{ "en" }}{% endif %}'
+  >
+    {% if locale == "en" %}عربي{% else %}En{% endif %}
+  </a>
+</div>

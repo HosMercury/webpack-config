@@ -1,0 +1,43 @@
+{% extends "layouts/guest.html.j2" %}
+
+{% block content %}
+<div>
+  <form method="post" action="/signup">
+    <fieldset>
+      <legend>{{ t!("sign_up")|capitalize }}</legend>
+
+      {% include "partials/locale.html.j2" %}
+
+      <div>
+        <label for="name" value="{{ previous_data.name }}">{{ t!("name")|capitalize }}</label>
+        <input required name="name" id="name" minlength="8" maxlength="50" placeholder="Hossam Maher" />
+      </div>
+      <div>
+        <label for="username">{{ t!("username")|capitalize }}</label>
+        <input required name="username" id="username" minlength="8" maxlength="50" placeholder="ferris"
+          value="{{ previous_data.username }}" />
+      </div>
+      <p>{{ t!("username_validation_messages")|capitalize }}</p>
+
+      <div>
+        <label for="password">{{ t!("password")|capitalize }}</label>
+        <input required name="password" id="password" type="password" minlength="8" maxlength="50"
+          placeholder="hunter42" />
+      </div>
+      <div>
+        <label for="password2">{{ t!("confirm_password")|capitalize }}</label>
+        <input required name="password2" id="password2" type="password" minlength="8" maxlength="50"
+          placeholder="hunter42H" />
+      </div>
+    </fieldset>
+
+    <p>{{ t!("password_validation_messages")|capitalize }}</p>
+
+    <button type="submit">{{ t!("send")|capitalize }}</button>
+  </form>
+  <div>
+    {% include "partials/google.html.j2" %}
+    <a href="/signin"> {{ t!("sign_in")|capitalize }} </a>
+  </div>
+</div>
+{% endblock %}

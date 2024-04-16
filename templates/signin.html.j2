@@ -1,0 +1,30 @@
+{% extends "layouts/guest.html.j2" %}
+
+{% block content %}
+<div>
+  <form method="post" action="/signin">
+    <fieldset>
+      <legend>{{ t!("sign_in")|capitalize }}</legend>
+
+      {% include "partials/locale.html.j2" %}
+
+      <div>
+        <label for="username">{{ t!("username")|capitalize }}</label>
+        <input required name="username" id="username" minlength="8" maxlength="50" value="{{ previous_data.username }}"
+          placeholder="ferris" />
+      </div>
+      <div>
+        <label for="password">{{ t!("password")|capitalize }}</label>
+        <input required name="password" id="password" type="password" value="" minlength="8" maxlength="50"
+          placeholder="hunter42" />
+      </div>
+    </fieldset>
+
+    <button type="submit">{{ t!("send") }}</button>
+  </form>
+  <div>
+    {% include "partials/google.html.j2" %}
+    <a href="/signup"> {{ t!("sign_up")|capitalize }} </a>
+  </div>
+</div>
+{% endblock %}
